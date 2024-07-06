@@ -1,0 +1,110 @@
+
+<form [formGroup]="registerForm" (ngSubmit)="submitDetails()">
+    <p-card header="Rejestracja">
+
+        <div class="field">
+            <label for="firstName"></label>
+            <input 
+                type="text" 
+                pInputText 
+                formControlName="firstName" 
+                class="w-full" 
+                name="firstName" 
+                placeholder="Podaj imię" 
+            />
+
+            <small *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" 
+            class="block p-error">
+                <div *ngIf="firstName.errors?.['required']">Wymagane jest imię</div>
+                <div *ngIf="firstName.errors?.['pattern']">Niepoprawne imię</div>
+            </small>
+        </div>
+
+
+        <div class="field">
+            <label for="lastName"></label>
+            <input 
+                type="text" 
+                pInputText 
+                formControlName="lastName" 
+                class="w-full" 
+                name="lastName" 
+                placeholder="Podaj nazwisko" 
+            />
+
+            <small *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" 
+            class="block p-error">
+                <div *ngIf="lastName.errors?.['required']">Wymagane jest nazwisko</div>
+                <div *ngIf="lastName.errors?.['pattern']">Niepoprawne nazwisko</div>
+            </small>
+        </div>
+
+
+        <div class="field">
+            <label for="email"></label>
+            <input 
+                type="text" 
+                pInputText 
+                formControlName="email" 
+                class="w-full" 
+                name="email" 
+                placeholder="E-mail" 
+            />
+
+            <small *ngIf="email.invalid && (email.dirty || email.touched)" 
+            class="block p-error">
+                <div *ngIf="email.errors?.['required']">Podaj e-mail twojego konta</div>
+                <div *ngIf="email.errors?.['email']">Niepoprawny e-mail</div>
+            </small>
+        </div>
+
+
+        <div class="field">
+            <label for="password"></label>
+            <input 
+                type="password" 
+                pInputText 
+                formControlName="password" 
+                class="w-full" 
+                name="password" 
+                placeholder="Hasło" 
+            />
+            <small *ngIf="password.invalid && (password.dirty || password.touched)" 
+            class="block p-error">
+                <div *ngIf="password.errors?.['required']">Wpisz hasło. Pole nie może być puste</div>
+            </small>
+        </div>
+
+
+        <div class="field">
+            <label for="confirmPassword"></label>
+            <input 
+                type="password" 
+                pInputText 
+                formControlName="confirmPassword" 
+                class="w-full" 
+                name="confirmPassword" 
+                placeholder="Potwierdź hasło" 
+            />
+            <small *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" 
+            class="block p-error">
+                <div *ngIf="confirmPassword.errors?.['required']">Potwierdź podane hasło</div>
+            </small>
+
+            <small *ngIf="registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid" 
+            class="block p-error">
+                Hasła powinny być takie same
+            </small>
+        </div>
+
+
+        <p-button 
+            label="Zarejestruj się" 
+            styleClass="w-full" 
+            [disabled]="registerForm.invalid"
+            type="submit"
+        />
+        <div class="mt-2">Masz już konto? <a routerLink="/login">Zaloguj się</a></div>
+
+    </p-card>
+</form>

@@ -1,0 +1,46 @@
+
+<form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <p-card header="Logowanie">
+
+        <div class="field">
+            <label for="email"></label>
+            <input 
+                type="text" 
+                pInputText 
+                formControlName="email" 
+                class="w-full" 
+                name="email" 
+                placeholder="E-mail" 
+            />
+
+            <small *ngIf="email.invalid && (email.dirty || email.touched)" 
+            class="block p-error">
+                <div *ngIf="email.errors?.['required']">Podaj e-mail twojego konta</div>
+                <div *ngIf="email.errors?.['email']">Niepoprawny e-mail</div>
+            </small>
+        </div>
+
+        <div class="field">
+            <label for="password"></label>
+            <input 
+                type="password" 
+                pInputText 
+                formControlName="password" 
+                class="w-full" 
+                name="password" 
+                placeholder="Hasło" 
+            />
+            <small *ngIf="password.invalid && (password.dirty || password.touched)" 
+            class="block p-error">
+                <div *ngIf="password.errors?.['required']">Wpisz hasło. Pole nie może być puste</div>
+            </small>
+        </div>
+        <p-button 
+            label="Zaloguj się" 
+            styleClass="w-full" 
+            [disabled]="loginForm.invalid"
+            type="submit"
+        />
+        <div class="mt-2">Nie masz konta? <a routerLink="/register">Zarejestruj się</a></div>
+    </p-card>
+</form>

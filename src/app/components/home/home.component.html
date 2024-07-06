@@ -1,0 +1,12 @@
+<div>
+    <h1>Lista użytkowników</h1>
+    <ul>
+      @for (user of users; track user.id){
+        <li>{{ user.firstName }}</li>
+        <li>{{ user.lastName }}</li>
+        <li>{{ user.email }}</li>
+      }
+    </ul>
+  </div>
+
+<p-button label="Wyloguj się" (onClick)="logOut()"></p-button>

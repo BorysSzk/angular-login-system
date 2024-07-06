@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "cdb1",
+      "firstName": "TestUser",
+      "lastName": "TestUser",
+      "email": "test1@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "f2cb",
+      "firstName": "Aa",
+      "lastName": "Bb",
+      "email": "AB@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "b7b0",
+      "firstName": "Test2",
+      "lastName": "Test2",
+      "email": "test2@gmail.com",
+      "password": "123"
+    }
+  ]
+}
